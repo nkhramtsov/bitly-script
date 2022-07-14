@@ -46,16 +46,16 @@ def is_bitlink(url):
 
 if __name__ == "__main__":
 
-    TOKEN = os.environ['BITLY_TOKEN']
+    token = os.environ['BITLY_TOKEN']
     print('Введите ссылку')
     inputed_url = input()
 
     try:
         if is_bitlink(inputed_url):
-            total_clicks = count_clicks(TOKEN, inputed_url)
+            total_clicks = count_clicks(token, inputed_url)
             print('Кликов', total_clicks)
         else:
-            bitlink = shorten_link(TOKEN, inputed_url)
+            bitlink = shorten_link(token, inputed_url)
             print('Битлинк', bitlink)
     except requests.exceptions.HTTPError:
         print('Ошибка')
