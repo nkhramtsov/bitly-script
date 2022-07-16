@@ -58,14 +58,14 @@ def parse_args():
 if __name__ == "__main__":
     load_dotenv()
     token = os.getenv('BITLY_TOKEN')
-    parser = parse_args()
+    arguments = parse_args()
 
     try:
         if is_bitlink(parser.link):
-            total_clicks = count_clicks(token, parser.link)
+            total_clicks = count_clicks(token, arguments.link)
             print('Кликов', total_clicks)
         else:
-            bitlink = shorten_link(token, parser.link)
+            bitlink = shorten_link(token, arguments.link)
             print('Битлинк', bitlink)
     except requests.exceptions.HTTPError:
         print('Ошибка')
